@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,  } from 'react-native'
+import { StyleSheet, Text, View, ToastAndroid  } from 'react-native'
 import {React, useState} from 'react';
 import axios from 'axios';
 import {useNavigation} from '@react-navigation/native';
@@ -18,6 +18,19 @@ export default function ClinicAdd() {
   // This function call when the user click submit button
   const onPostPressed = () => {
     // Create constant object to pass value to backend
+  if(title.value === '' ){
+
+    ToastAndroid.show('Title Field Empty !', ToastAndroid.SHORT);
+
+  }else if(date.value === ''){
+
+    ToastAndroid.show('Date Field Empty ! ', ToastAndroid.SHORT);
+
+  }else if(description.value === ''){
+
+    ToastAndroid.show('Description Field Empty !', ToastAndroid.SHORT);
+
+  }else{
     const data = {
       title: title.value,
       date: date.value,
@@ -29,7 +42,7 @@ export default function ClinicAdd() {
       .post(BASE_URL+ 'clinicsave', data)
       .then(function (response) {
         if (response.data.success) {
-          alert('Message Sent Success');
+          ToastAndroid.show('Clinic Save Successfully !', ToastAndroid.SHORT);
           setTimeout(() => {
             Navigation.navigate('ClinicFetch');
           }, 2000);
@@ -38,6 +51,7 @@ export default function ClinicAdd() {
       .catch(function (error) {
         alert(error);
       });
+    }
   };
 
   return (

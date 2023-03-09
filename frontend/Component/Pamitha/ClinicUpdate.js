@@ -21,9 +21,9 @@ export default function UpdateClinic({route}) {
     console.log(clinicID);
     // Create constant object to pass value to backend
     if (title.value === ' ') {
-      alert('Please input title');
+      ToastAndroid.show('Title Field Empty !', ToastAndroid.SHORT);
     } else if (date.value == ' ') {
-      alert('Please input date');
+      ToastAndroid.show('Date Field Empty !', ToastAndroid.SHORT);
     } else {
       const data = {
         title: title,
@@ -35,7 +35,7 @@ export default function UpdateClinic({route}) {
         .put(BASE_URL + `clinic/update/${clinicID}`, data)
         .then(function (res) {
           if (res.data.success) {
-            alert('Clinic Update Success');
+            ToastAndroid.show('Clinic Update Successfully !', ToastAndroid.SHORT);
             setTimeout(() => {
               Navigation.navigate('ClinicFetch');
             }, 2000);

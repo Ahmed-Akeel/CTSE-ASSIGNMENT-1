@@ -57,14 +57,14 @@ export default function ClinicFetch() {
       .delete(BASE_URL + `clinic/delete/${id}`)
       .then(function (res) {
         if (res.data.success) {
-          Alert('Delete Successfull');
+          ToastAndroid.show('Delete Successfully', ToastAndroid.SHORT);
           setTimeout(() => {
             retriveIssue();
           }, 1000);
         }
       })
       .catch(function (error) {
-        Alert('Fail' + error);
+        ToastAndroid.show(error, ToastAndroid.SHORT);
       });
   };
 
@@ -95,11 +95,11 @@ export default function ClinicFetch() {
             <View style={styles.itemBox}>
               <View style={styles.fixToText}>
              
-                  <Text style={styles.mainTital}>title : {data.title}</Text>
+                  <Text style={styles.mainTital}>Title : {data.title}</Text>
 
                   <Text style={styles.mainButtonBlockText}>Date : {data.date}</Text>
 
-                  <Text style={styles.mainButtonBlockText}>DESC : {data.description}</Text>
+                  <Text style={styles.mainButtonBlockText}>Description : {data.description}</Text>
 
                    <View style={styles.but}>
                       <Button
@@ -244,6 +244,7 @@ const styles = StyleSheet.create({
     marginLeft: -20,
     paddingTop: 6,
     paddingLeft: 20,
+    fontWeight: 'bold',
   },
  
 

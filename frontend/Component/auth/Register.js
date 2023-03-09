@@ -9,6 +9,7 @@ import {
   Button,
   Image,
   ScrollView,
+  ToastAndroid
 } from 'react-native';
 // import FormBackground from '../../components/form/FormBackground';
 import TextInput from '../SubComponent/InputField'
@@ -25,9 +26,24 @@ export default function Register() {
     const [Phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [repassword, setrePassword] = useState('');
-    // const [userID, setUserID] = useState('4488');
 
     const onPressRegister = () => {
+
+      if(userName === ''){
+        ToastAndroid.show('User Name Field Empty   !', ToastAndroid.SHORT);
+      }else if(Email === ''){
+        ToastAndroid.show('Email Field Empty   !', ToastAndroid.SHORT);
+      }else if(Phone === ''){
+        ToastAndroid.show('Phone Field Empty   !', ToastAndroid.SHORT);
+      }else if(password === ''){
+        ToastAndroid.show('Password Field Empty   !', ToastAndroid.SHORT);
+      }else if(repassword === ''){
+        ToastAndroid.show('Repassword Field Empty   !', ToastAndroid.SHORT);
+      }else if(password.length < 8){
+        ToastAndroid.show('Your Password Should be more than 8 character  !', ToastAndroid.SHORT);
+      }
+      else{
+
       if(password === repassword){
         userRegister({
             userName: userName,
@@ -37,19 +53,20 @@ export default function Register() {
           }).then((result)=>{
             if(result.data.status){
       
-              alert('Registration Success');
+              ToastAndroid.show('Registration Success.......', ToastAndroid.SHORT);
                 setTimeout(() => {
                   Navigation.navigate('Login');
                 }, 2000);
             }else{
-              alert('Registration Fail');
+              ToastAndroid.show('Registration Fail.......', ToastAndroid.SHORT);
             }
           }).catch(error=>{
             console.log(error);
           })
         }else{
-          alert('Password not match')
+          ToastAndroid.show('Password not match', ToastAndroid.SHORT);
         }
+      }
     }
 
   return (

@@ -5,13 +5,9 @@
 import {React, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
-// import Background from '../../components/auth/Background';
-// import Logo from '../../components/auth/Logo';
 import TextInput from '../SubComponent/InputField'
 import SubmitButton from '../SubComponent/Button'
-
-import {StyleSheet, Text, View, TouchableOpacity,Image, ScrollView} from 'react-native';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
+import {StyleSheet, Text, View, TouchableOpacity,Image, ScrollView, ToastAndroid} from 'react-native';
 import { userLogin } from './UserApi';
 
 export default function Login({navigation}) {
@@ -22,13 +18,12 @@ export default function Login({navigation}) {
 
   // This function call when the user click login button
   const onLoginPressed = () => {
-    // Create constant object to pass value to backend
-    // const data = {
-    //   userName: name.value,
-    // //   password: password.value,
-    // };
-
-    //Call POST method to validate user crenditals form backend and get reponse
+  
+    if(name.value === ''){
+      ToastAndroid.show('UserName Field Empty !', ToastAndroid.SHORT);
+    }else if(password.value === ''){
+      ToastAndroid.show('Password Field Empty !', ToastAndroid.SHORT);
+    }else{
     
     userLogin({
       userName: name.value,
@@ -37,41 +32,27 @@ export default function Login({navigation}) {
       if(result.data.status){
 
         if(result.data.success === 'Admin Login successfully'){
-          alert('Admin Login successfully');
+          ToastAndroid.show('Admin Login Success !', ToastAndroid.SHORT);
           setTimeout(() => {
             Navigation.navigate('Nav');
           }, 2000);
         }else{
-          alert('Login Success');
+          ToastAndroid.show('Login Success !', ToastAndroid.SHORT);
           setTimeout(() => {
             Navigation.navigate('Nav');
           }, 2000);
         }
       }else{
-        alert('Login Fail');
+        ToastAndroid.show('Login Fail !', ToastAndroid.SHORT);
       }
     }).catch(error=>{
       console.log(error);
     })
-
-    // axios
-    //   .post('http://192.168.56.1:5000/user/login', data)
-    //   .then(function (response) {
-    //     if (response.data.success) {
-    //       alert('Login Success');
-    //       setTimeout(() => {
-    //         Navigation.navigate('Home');
-    //       }, 2000);
-    //     }
-    //   })
-    //   .catch(function (error) {
-    //     alert('Login Fail');
-    //   });
+    }
   };
 
   return (
-    // <Background>
-    //   <Logo />
+  
     <ScrollView style={styles. scrollView}>
     <View>
 
@@ -111,7 +92,7 @@ export default function Login({navigation}) {
       </View>
       </View>
       </ScrollView>
-    // </Background>
+    
   );
 }
 
