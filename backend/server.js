@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const multer = require('multer');
+// const multer = require('multer');
 require('dotenv').config();
 
 
@@ -11,7 +11,8 @@ const app = express();
 //import route
 
 
-// const Notice = require('./routes/user');
+const Clinic = require('./Routes/ClinicRoute');
+const User = require('./Routes/UserRouter');
 
 
 //app middleware
@@ -20,7 +21,8 @@ app.use(cors());
 // app.use(multer());
 
 
-// app.use(Notice);
+app.use(Clinic);
+app.use(User);
 
 
 
