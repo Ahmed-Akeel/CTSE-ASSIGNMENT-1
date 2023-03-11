@@ -65,21 +65,21 @@ export default function UpdateClinic({route}) {
         <Text style={styles.header}>Update Clinic Details</Text>
 
         <TextInput
-          label="Post title"
+          label="Update Title"
           returnKeyType="next"
           value={title}
           onChangeText={text => settitle(text)}
         />
 
         <TextInput
-          label="Post title"
+          label="Update Date"
           returnKeyType="next"
           value={date}
           onChangeText={text => setdate(text)}
         /> 
 
         <TextInput
-          label="date"
+          label="Update description"
           multiline={true}
           numberOfLines={4}
           value={desc}

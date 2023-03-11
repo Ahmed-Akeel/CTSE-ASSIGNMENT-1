@@ -1,6 +1,8 @@
-import { StyleSheet, Text, View, Button, Image } from 'react-native'
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import {useNavigation} from '@react-navigation/native';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 export default function ClinicHome() {
 
@@ -14,23 +16,28 @@ export default function ClinicHome() {
               source={require('../assets/images/chome.jpg')}
             />
           </View>
+      <View style={styles.back}>
+        <TouchableOpacity onPress={() => Navigation.replace('ClinicAdd')}>
+        <View style={styles.Navback}>
+           <Image
+              style={styles.write}
+              source={require('../assets/images/write.png')}
+            />
+          <Text style={styles.link}>Schedule Clinic</Text>
+        </View>
+        </TouchableOpacity>
+     
 
-     <Button styles={styles.btn}
-       onPress={() => {
-        Navigation.navigate('ClinicAdd');
-      }}
-        title="Schedule Clinic"
-        color="#841584"
-        marginTop="20px"
-      />
-      <Button styles={styles.btn}
-       onPress={() => {
-        Navigation.navigate('ClinicFetch');
-      }}
-        title="View Clinic"
-        color="#841584"
-        marginTop="20px"
-      />
+        <TouchableOpacity onPress={() => Navigation.replace('ClinicFetch')}>
+        <View style={styles.Navback}>
+           <Image
+              style={styles.write}
+              source={require('../assets/images/write.png')}
+            />
+          <Text style={styles.link}>Clinic Fetch</Text>
+        </View>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
@@ -51,5 +58,34 @@ const styles = StyleSheet.create({
      alignSelf: 'center',
      borderRadius: 20,
      marginTop: 100,
+  },
+  write:{
+      width: '20%',
+      height: '100%',
+      marginLeft: 15,
+  },
+  back:{
+      marginTop: -70,
+  },
+  Navback:{
+    // alignSelf: 'center'
+    flexDirection: 'row',
+    height: 120,
+    // backgroundColor: 'blue',
+    marginLeft: 12,
+    marginRight: 12,
+    padding: 20,
+    borderRadius: 12,
+    borderColor: 'pink',
+    borderWidth: 2,
+    marginBottom: 20,
+  },
+  link:{
+    color: 'black',
+    marginLeft: 45,
+    fontSize: 23,
+    marginTop: 20,
+    FontFamily: 'bold'
   }
+
 })

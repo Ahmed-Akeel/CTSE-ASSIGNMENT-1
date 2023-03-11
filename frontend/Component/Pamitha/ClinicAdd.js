@@ -83,7 +83,8 @@ export default function ClinicAdd() {
 
         <TextInput
           label="Enter description"
-          returnKeyType="next"
+          multiline={true}
+          numberOfLines={4}
           value={desc.value}
           onChangeText={text => setdesc({value: text, error: ''})}
         />
