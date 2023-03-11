@@ -9,7 +9,8 @@ import {
   Button,
   Image,
   ScrollView,
-  ToastAndroid
+  ToastAndroid,
+  Alert
 } from 'react-native';
 // import FormBackground from '../../components/form/FormBackground';
 import TextInput from '../SubComponent/InputField'
@@ -51,14 +52,16 @@ export default function Register() {
             userContact: Phone,
             password: password
           }).then((result)=>{
+            console.log("ffffffff",result);
             if(result.data.status){
-      
+              console.log("ffffffff",result);
               ToastAndroid.show('Registration Success.......', ToastAndroid.SHORT);
                 setTimeout(() => {
                   Navigation.navigate('Login');
                 }, 2000);
             }else{
-              ToastAndroid.show('Registration Fail.......', ToastAndroid.SHORT);
+              // ToastAndroid.show('Registration Fail.......', ToastAndroid.SHORT);
+              Alert("registration fail........")
             }
           }).catch(error=>{
             console.log(error);
@@ -92,7 +95,7 @@ export default function Register() {
             returnKeyType="next"
             value={userName}
             onChangeText={text => setUserName(text)}
-            textContentType="text"
+            textContentType="username"
           />
 
           <TextInput
@@ -100,7 +103,7 @@ export default function Register() {
             returnKeyType="next"
             value={Email}
             onChangeText={text => setEmail(text)}
-            textContentType="text"
+            textContentType="emailAddress"
           />
 
           <TextInput
@@ -108,7 +111,7 @@ export default function Register() {
             returnKeyType="next"
             value={Phone}
             onChangeText={text => setPhone(text)}
-            textContentType="text"
+            textContentType="telephoneNumber"
           />
 
            <TextInput
@@ -125,7 +128,7 @@ export default function Register() {
             returnKeyType="next"
             value={repassword}
             onChangeText={text => setrePassword(text)}
-            textContentType="repassword"
+            textContentType="newPassword"
             secureTextEntry
           />
 
