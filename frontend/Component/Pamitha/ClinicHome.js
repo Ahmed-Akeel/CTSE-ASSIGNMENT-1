@@ -31,8 +31,8 @@ export default function ClinicHome() {
         <TouchableOpacity onPress={() => Navigation.replace('ClinicFetch')}>
         <View style={styles.Navback}>
            <Image
-              style={styles.write}
-              source={require('../assets/images/write.png')}
+              style={styles.view}
+              source={require('../assets/images/view.png')}
             />
           <Text style={styles.link}>Clinic Fetch</Text>
         </View>
@@ -64,8 +64,13 @@ const styles = StyleSheet.create({
       height: '100%',
       marginLeft: 15,
   },
+  view:{
+    width: '30%',
+    height: '120%',
+    marginLeft: 10,
+},
   back:{
-      marginTop: -70,
+      marginTop: -90,
   },
   Navback:{
     // alignSelf: 'center'

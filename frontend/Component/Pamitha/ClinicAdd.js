@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View, ToastAndroid  } from 'react-native'
-import {React, useState} from 'react';
+import {React, useState, Animated} from 'react';
 import axios from 'axios';
 import {useNavigation} from '@react-navigation/native';
 
 import TextInput from '../SubComponent/InputField'
 import SubmitButton from '../SubComponent/Button'
 import {BASE_URL}  from '../Baseurl'
+
 
 export default function ClinicAdd() {
 
@@ -93,6 +94,7 @@ export default function ClinicAdd() {
         onPress={onPostPressed}>
           Send
         </SubmitButton>
+        
       </View>
     </View>
   )

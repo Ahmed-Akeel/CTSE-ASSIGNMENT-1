@@ -25,10 +25,10 @@ export default function Splash() {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', margin: 0, padding: 0, backgroundColor: 'white' }}>
       <Image
-        source={require('./assets/images/splash.png')}
-        style={{width: '85%', height: '50%', margin: 0, padding: 0}}
+        source={require('./assets/images/sp.png')}
+        style={{width: '60%', height: '30%', marginTop: -80, padding: 0}}
       />
-      <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold'}}> MOH Office Malabe</Text>
+      <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', marginTop: 60}}> MOH Office Malabe</Text>
     </View>
   );
 }

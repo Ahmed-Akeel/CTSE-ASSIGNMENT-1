@@ -48,20 +48,15 @@ export default function UpdateClinic({route}) {
   };
 
   return (
-    // <Background>
+
     <View>
-      <View style={[styles.card, styles.shadowProp]}>
-        {/* <View style={styles.container}>
-          <View style={styles.background}>
             <Image
               style={styles.image}
-              source={require('../assets/images/back.png')}
+              source={require('../assets/images/update.png')}
             />
-          </View>
-        </View> */}
       
 
-
+       <View style={styles.formbox}>
         <Text style={styles.header}>Update Clinic Details</Text>
 
         <TextInput
@@ -88,9 +83,9 @@ export default function UpdateClinic({route}) {
         <SubmitButton mode="contained" color="#6495ed" onPress={onPressUpdate}>
           Update
         </SubmitButton>
+        </View>
       </View>
-      </View>
-    // {/* </Background> */}
+   
   );
 }
 
@@ -99,7 +94,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     paddingVertical: 8,
-    marginTop: 20,
+    marginTop: 40,
     marginBottom: 20,
     bottom: 5,
     color: 'black',
@@ -111,7 +106,7 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    marginTop: 4,
+    marginTop: 0,
   },
   link: {
     fontWeight: 'bold',
@@ -144,23 +139,28 @@ const styles = StyleSheet.create({
     width: 350,
     overflow: 'hidden', // for hide the not important parts from circle
     margin: 10,
-    height: 200,
+    height: 100,
   },
   background: {
     // this shape is a circle
     borderRadius: 0, // border borderRadius same as width and height
     width: 535,
-    height: 600,
+    height: 200,
     marginLeft: -100, // reposition the circle inside parent view
     position: 'absolute',
     bottom: 5, // show the bottom part of circle
     overflow: 'hidden', // hide not important part of image
   },
   image: {
-    height: 200, // same width and height for the container
-    width: 380,
-    position: 'absolute', // position it in circle
-    bottom: 5, // position it in circle
-    marginLeft: 100, // center it in main view same value as marginLeft for circle but positive
+    height: 180, // same width and height for the container
+    width: 200,
+    bottom: 0, // position it in circle
+    alignSelf: 'center',
+    marginTop: 30, // center it in main view same value as marginLeft for circle but positive
   },
+  formbox:{
+    marginTop: -50,
+    marginLeft: 20,
+    marginRight: 20,
+  }
 });
