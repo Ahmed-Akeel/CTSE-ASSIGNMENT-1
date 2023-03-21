@@ -6,7 +6,7 @@ import axios from 'axios';
 import TextInput from '../SubComponent/InputField'
 import SubmitButton from '../SubComponent/Button'
 import {BASE_URL}  from '../Baseurl'
-import {StyleSheet, Image, View, Text,ToastAndroid} from 'react-native';
+import {StyleSheet, Image, View, Text} from 'react-native';
 
 export default function UpdateClinic({route}) {
   const Navigation = useNavigation();

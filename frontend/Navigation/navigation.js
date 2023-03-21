@@ -13,6 +13,11 @@ import Register from '../Component/auth/Register';
 import Login from '../Component/auth/Login';
 import Splash from '../Component/splash';
 
+import PhiHome from '../Component/Akeel/phiHome';
+import PhiAdd from '../Component/Akeel/phiAdd';
+import PhiFetch from '../Component/Akeel/phiFetch';
+import UpdatePhi from '../Component/Akeel/phiUpdate';
+
 const Stack = createNativeStackNavigator();
 
 export default function navigation() {
@@ -68,7 +73,29 @@ export default function navigation() {
     component={UpdateClinic}
   /> 
 
- 
+<Stack.Screen
+    options={{headerShown: false}}
+    name="phi"
+    component={PhiHome}
+  />
+
+ <Stack.Screen
+    options={{headerShown: false}}
+    name="PhiAdd"
+    component={PhiAdd}
+  /> 
+
+  <Stack.Screen
+    options={{headerShown: false}}
+    name="PhiFetch"
+    component={PhiFetch}
+  /> 
+
+ <Stack.Screen
+    options={{headerShown: false}}
+    name="UpdatePhi"
+    component={UpdatePhi}
+  /> 
 
   </Stack.Navigator>
 </NavigationContainer>

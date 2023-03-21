@@ -34,7 +34,7 @@ export default function Nav() {
       />
       <Button styles={styles.btn}
        onPress={() => {
-        Navigation.navigate('User');
+        Navigation.navigate('phi');
       }}
         title="Akeel"
         color="#841584"
@@ -61,7 +61,7 @@ export default function Nav() {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => Navigation.replace('ClinicAdd')}>
+        <TouchableOpacity onPress={() => Navigation.navigate('phi')}>
           <View style={styles.Navback}>
             <Image
               style={styles.write}
