@@ -3,7 +3,7 @@ import {React, useState, useEffect} from 'react';
 import {useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 // import Background from '../../components/session/Background';
-import Icon from 'react-native-vector-icons/Feather';
+// import Icon from 'react-native-vector-icons/Feather';
 import Button from '../SubComponent/Button'
 import {BASE_URL} from '../Baseurl';
 
@@ -19,7 +19,7 @@ import {
   SectionList,
   Linking,
 } from 'react-native';
-import { black } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
+// import { black } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
 export default function ClinicFetch() {
   const Navigation = useNavigation();

@@ -27,7 +27,7 @@ export default function Nav() {
       />
       <Button styles={styles.btn}
        onPress={() => {
-        Navigation.navigate('User');
+        Navigation.navigate('Mathernity');
       }}
         title="Ayeshi"
         color="#841584"
