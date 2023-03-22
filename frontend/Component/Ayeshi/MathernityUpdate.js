@@ -10,7 +10,7 @@ import {StyleSheet, Image, View, Text,ScrollView, ToastAndroid} from 'react-nati
 export default function UpdateMathernity({route}) {
   const Navigation = useNavigation();
 
-  const mathernityID = route.params.mathernityId;
+  const mathernityId = route.params.mathernityId;
   const [firstName, setfirstName] = useState(route.params.firstName);
   const [lastName, setlastName] = useState(route.params.lastName);
   const [division, setdivision] = useState(route.params.division);
@@ -24,7 +24,7 @@ export default function UpdateMathernity({route}) {
 
   // This function call when the user click submit button
   const onPressUpdate = () => {
-    console.log(mathernityID);
+    console.log(mathernityId);
     // Create constant object to pass value to backend
     if(firstName.value === '' ){
 
@@ -62,25 +62,25 @@ export default function UpdateMathernity({route}) {
     
       }else{
         const data = {
-            firstName: firstName.value,
-            lastName: lastName.value,
-            division: division.value,
-            regNo: regNo.value,
-            dob: dob.value,
-            address: address.value,
-            occupation: occupation.value,
-            healthStatus: healthStatus.value,
-            dateLast: dateLast.value,
-            dateReturn: dateReturn.value,
+            firstName: firstName,
+            lastName: lastName,
+            division: division,
+            regNo: regNo,
+            dob: dob,
+            address: address,
+            occupation: occupation,
+            healthStatus: healthStatus,
+            dateLast: dateLast,
+            dateReturn: dateReturn,
         };
       //Call POST method to validate user crenditals form backend and get reponse
       axios
-        .put(BASE_URL + `mathernity/update/${mathernityID}`, data)
+        .put(BASE_URL + `Mathernity/update/${mathernityId}`, data)
         .then(function (res) {
           if (res.data.success) {
             ToastAndroid.show('Mothers Data Update Successfully !', ToastAndroid.SHORT);
             setTimeout(() => {
-              Navigation.navigate('MathernityFetch');
+              Navigation.navigate('Mathernity');
             }, 2000);
           }
         })
