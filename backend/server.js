@@ -14,7 +14,7 @@ const app = express();
 const Clinic = require('./Routes/ClinicRoute');
 const User = require('./Routes/UserRouter');
 const Mathernity = require('./Routes/MathernityRoute');
-
+const  Phi=require('./Routes/phiRoute')
 
 //app middleware
 app.use(bodyParser.json());
@@ -25,6 +25,7 @@ app.use(cors());
 app.use(Clinic);
 app.use(User);
 app.use(Mathernity);
+app.use(Phi)
 
 
 
