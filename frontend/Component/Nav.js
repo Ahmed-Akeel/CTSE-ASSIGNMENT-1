@@ -26,7 +26,7 @@ export default function Nav() {
       />
       <Button styles={styles.btn}
        onPress={() => {
-        Navigation.navigate('User');
+        Navigation.navigate('Mathernity');
       }}
         title="Ayeshi"
         color="#841584"
@@ -71,7 +71,7 @@ export default function Nav() {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => Navigation.replace('ClinicFetch')}>
+        <TouchableOpacity onPress={() => Navigation.replace('Mathernity')}>
           <View style={styles.Navback}>
             <Image
               style={styles.view}

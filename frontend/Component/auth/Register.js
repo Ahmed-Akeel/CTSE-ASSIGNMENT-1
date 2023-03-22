@@ -16,7 +16,7 @@ import {
 import TextInput from '../SubComponent/InputField'
 import SubmitButton from '../SubComponent/Button'
 // import Background from '../../components/userComplaint/Background';
-import Icon from 'react-native-vector-icons/AntDesign';
+// import Icon from 'react-native-vector-icons/AntDesign';
 
 export default function Register() {
 

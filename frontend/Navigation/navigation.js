@@ -12,6 +12,10 @@ import UpdateClinic from '../Component/Pamitha/ClinicUpdate';
 import Register from '../Component/auth/Register';
 import Login from '../Component/auth/Login';
 import Splash from '../Component/splash';
+import MathernityHome from '../Component/Ayeshi/MathernityHome';
+import MathernityAdd from '../Component/Ayeshi/MathernityAdd';
+import MathernityFetch from '../Component/Ayeshi/MathernityFetch';
+import UpdateMathernity from '../Component/Ayeshi/MathernityUpdate';
 
 import PhiHome from '../Component/Akeel/phiHome';
 import PhiAdd from '../Component/Akeel/phiAdd';
@@ -71,7 +75,27 @@ export default function navigation() {
     options={{headerShown: false}}
     name="UpdateClinic"
     component={UpdateClinic}
+  />
+  <Stack.Screen
+    options={{headerShown: false}}
+    name="Mathernity"
+    component={MathernityHome}
+  />
+  <Stack.Screen
+    options={{headerShown: false}}
+    name="MathernityAdd"
+    component={MathernityAdd}
   /> 
+  <Stack.Screen
+    options={{headerShown: false}}
+    name="MathernityFetch"
+    component={MathernityFetch}
+  /> 
+<Stack.Screen
+    options={{headerShown: false}}
+    name="UpdateMathernity"
+    component={UpdateMathernity}
+  />  
 
 <Stack.Screen
     options={{headerShown: false}}

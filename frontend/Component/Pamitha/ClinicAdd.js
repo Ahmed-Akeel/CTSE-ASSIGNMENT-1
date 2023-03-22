@@ -27,7 +27,7 @@ export default function ClinicAdd() {
 
     ToastAndroid.show('Date Field Empty ! ', ToastAndroid.SHORT);
 
-  }else if(description.value === ''){
+  }else if(desc.value === ''){
 
     ToastAndroid.show('Description Field Empty !', ToastAndroid.SHORT);
 
