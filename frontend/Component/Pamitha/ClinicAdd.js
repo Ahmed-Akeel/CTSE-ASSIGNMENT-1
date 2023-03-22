@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View, ToastAndroid  } from 'react-native'
-import {React, useState} from 'react';
+import {React, useState, Animated} from 'react';
 import axios from 'axios';
 import {useNavigation} from '@react-navigation/native';
 
 import TextInput from '../SubComponent/InputField'
 import SubmitButton from '../SubComponent/Button'
 import {BASE_URL}  from '../Baseurl'
+
 
 export default function ClinicAdd() {
 
@@ -26,7 +27,7 @@ export default function ClinicAdd() {
 
     ToastAndroid.show('Date Field Empty ! ', ToastAndroid.SHORT);
 
-  }else if(description.value === ''){
+  }else if(desc.value === ''){
 
     ToastAndroid.show('Description Field Empty !', ToastAndroid.SHORT);
 
@@ -83,7 +84,8 @@ export default function ClinicAdd() {
 
         <TextInput
           label="Enter description"
-          returnKeyType="next"
+          multiline={true}
+          numberOfLines={4}
           value={desc.value}
           onChangeText={text => setdesc({value: text, error: ''})}
         />
@@ -92,6 +94,7 @@ export default function ClinicAdd() {
         onPress={onPostPressed}>
           Send
         </SubmitButton>
+        
       </View>
     </View>
   )

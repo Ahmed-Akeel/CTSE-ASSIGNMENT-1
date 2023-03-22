@@ -13,6 +13,7 @@ const app = express();
 
 const Clinic = require('./Routes/ClinicRoute');
 const User = require('./Routes/UserRouter');
+const Mathernity = require('./Routes/MathernityRoute');
 
 
 //app middleware
@@ -23,6 +24,7 @@ app.use(cors());
 
 app.use(Clinic);
 app.use(User);
+app.use(Mathernity);
 
 
 
