@@ -22,6 +22,11 @@ import PhiAdd from '../Component/Akeel/phiAdd';
 import PhiFetch from '../Component/Akeel/phiFetch';
 import UpdatePhi from '../Component/Akeel/phiUpdate';
 
+import NoticeAdd from '../Component/Raveena/NoticeAdd';
+import NoticeFetch from '../Component/Raveena/NoticeFetch';
+import NoticeHome from '../Component/Raveena/NoticeHome';
+import UpdateNotice from '../Component/Raveena/NoticeUpdate';
+
 const Stack = createNativeStackNavigator();
 
 export default function navigation() {
@@ -119,7 +124,30 @@ export default function navigation() {
     options={{headerShown: false}}
     name="UpdatePhi"
     component={UpdatePhi}
-  /> 
+  />  
+
+<Stack.Screen
+    options={{headerShown: false}}
+    name="NoticeHome"
+    component={NoticeHome}
+  />  
+
+<Stack.Screen
+    options={{headerShown: false}}
+    name="NoticeAdd"
+    component={NoticeAdd}
+  />  
+
+<Stack.Screen
+    options={{headerShown: false}}
+    name="NoticeFetch"
+    component={NoticeFetch}
+  />  
+  <Stack.Screen
+    options={{headerShown: false}}
+    name="NoticeUpdate"
+    component={UpdateNotice}
+  />  
 
   </Stack.Navigator>
 </NavigationContainer>

@@ -1,87 +1,62 @@
-import {StyleSheet, Text, View, Button, TouchableOpacity, Image} from 'react-native';
+import {StyleSheet, Text, View, Button, TouchableOpacity, Image, ImageBackground} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
+import HomeButton from './SubComponent/HomeButton';
 
 export default function Nav() {
   const Navigation = useNavigation();
 
   return (
-    <View styles={styles.container}>
-      {/* <View styles={styles.btn}>
-      <Button 
+   
+    <ImageBackground
+      style={styles.backgroundImage}
+      source={require('./assets/images/77.jpg')}>
+      <View styles={styles.container}>
+        <Text style={styles.header}>MOH Dashboard</Text>
+        <View styles={styles.btn}>
+          <HomeButton
+            onPress={() => {
+              Navigation.navigate('Clinic');
+            }}
+            title="ADMIN"
+            color="#1769aa"
+            backgroundColor="#26a69a"
+          />
+        </View>
+
+        <HomeButton
+          styles={styles.btn}
           onPress={() => {
-            Navigation.navigate('Clinic');
+            Navigation.navigate('NoticeHome');
           }}
-        title="Pamitha"
-        color="#841584"
-      />
+          title="MIDWIFE"
+          color="#1769aa"
+          marginTop="20px"
+          backgroundColor="#26a69a"
+        />
+
+        <HomeButton
+          styles={styles.btn}
+          onPress={() => {
+            Navigation.navigate('Mathernity');
+          }}
+          title="MATERNITY"
+          color="#1769aa"
+          marginTop="20px"
+          backgroundColor="#26a69a"
+        />
+        <HomeButton
+          styles={styles.btn}
+          onPress={() => {
+            Navigation.navigate('phi');
+          }}
+          title="PHI"
+          color="#1769aa"
+          marginTop="20px"
+          backgroundColor="#26a69a"
+        />
       </View>
-      <Button styles={styles.btn}
-       onPress={() => {
-        Navigation.navigate('User');
-      }}
-        title="Raveena"
-        color="#841584"
-        marginTop="20px"
-      />
-      <Button styles={styles.btn}
-       onPress={() => {
-        Navigation.navigate('Mathernity');
-      }}
-        title="Ayeshi"
-        color="#841584"
-        marginTop="20px"
-      />
-      <Button styles={styles.btn}
-       onPress={() => {
-        Navigation.navigate('phi');
-      }}
-        title="Akeel"
-        color="#841584"
-        marginTop="20px"
-      /> */}
-      <View style={styles.back}>
-        <TouchableOpacity onPress={() => Navigation.replace('Clinic')}>
-          <View style={styles.Navback}>
-            <Image
-              style={styles.write}
-              source={require('./assets/images/write.png')}
-            />
-            <Text style={styles.link}>Clinic page</Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => Navigation.replace('ClinicFetch')}>
-          <View style={styles.Navback}>
-            <Image
-              style={styles.view}
-              source={require('./assets/images/view.png')}
-            />
-            <Text style={styles.link}>Raveena</Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => Navigation.navigate('phi')}>
-          <View style={styles.Navback}>
-            <Image
-              style={styles.write}
-              source={require('./assets/images/write.png')}
-            />
-            <Text style={styles.link}>Akeel</Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => Navigation.replace('Mathernity')}>
-          <View style={styles.Navback}>
-            <Image
-              style={styles.view}
-              source={require('./assets/images/view.png')}
-            />
-            <Text style={styles.link}>Ayeshi</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </ImageBackground>
   );
 }
 
@@ -90,52 +65,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 16,
+    marginHorizontal: 50,
   },
-
+  header: {
+    fontSize: 30,
+    fontFamily: 'Helvetica Neue',
+    fontWeight: 'bold',
+    paddingVertical: 8,
+    marginTop: 80,
+    marginBottom: 70,
+    bottom: 5,
+    color: 'black',
+    alignSelf: 'center',
+  },
+  backgroundImage: {flex: 1,width:"100%",height:960},
   btn: {
-    marginTop: 15,
+    marginTop: 100,
     marginLeft: 5,
     marginBottom: 50,
   },
-  back: {
-    marginTop: 90,
-  },
-  Navback: {
-    // alignSelf: 'center'
-    flexDirection: 'row',
-    height: 120,
-    // backgroundColor: 'blue',
-    marginLeft: 12,
-    marginRight: 12,
-    padding: 20,
-    borderRadius: 12,
-    borderColor: 'pink',
-    borderWidth: 2,
-    marginBottom: 20,
-  },
-  link: {
-    color: 'black',
-    marginLeft: 45,
-    fontSize: 23,
-    marginTop: 20,
-    FontFamily: 'bold',
-  },
-  image:{
-    width: '90%',
-    height: 250,
-    alignSelf: 'center',
-    borderRadius: 20,
-    marginTop: 100,
- },
- write:{
-     width: '20%',
-     height: '100%',
-     marginLeft: 15,
- },
- view:{
-  width: '30%',
-  height: '120%',
-  marginLeft: 10,
-}
 });
