@@ -92,7 +92,7 @@ export default function MathernityFetch() {
     <ScrollView>
     <View>
       <View style={styles.container}>
-        <Text style={styles.pagename}>All Mathernity Schedule Details</Text>
+        <Text style={styles.pagename}>All Mothers Details</Text>
 
         {issues.map((data, index) => {
           return (
