@@ -9,9 +9,18 @@ const app = express();
 
 //import route
 
+
 const Clinic = require("./Routes/ClinicRoute");
 const User = require("./Routes/UserRouter");
 const Notice = require("./Routes/NoticeRoute");
+
+
+const Clinic = require('./Routes/ClinicRoute');
+const User = require('./Routes/UserRouter');
+const Mathernity = require('./Routes/MathernityRoute');
+const  Phi=require('./Routes/phiRoute')
+const  Notice=require('./Routes/NoticeRoute')
+
 
 //app middleware
 app.use(bodyParser.json());
@@ -20,7 +29,16 @@ app.use(cors());
 
 app.use(Clinic);
 app.use(User);
+
 app.use(Notice);
+
+app.use(Mathernity);
+app.use(Phi)
+app.use(Notice)
+
+
+
+
 
 const PORT = 8001;
 const DB_URL =

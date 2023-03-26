@@ -3,44 +3,61 @@ import {React, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
 
-import TextInput from '../SubComponent/InputField';
-import SubmitButton from '../SubComponent/Button';
-import {BASE_URL} from '../Baseurl';
-import {StyleSheet, Image, View, Text} from 'react-native';
+import TextInput from '../SubComponent/InputField'
+import SubmitButton from '../SubComponent/Button'
+import {BASE_URL}  from '../Baseurl'
+import {StyleSheet, Image, View, Text,ToastAndroid} from 'react-native';
 
-export default function UpdateNotice({route}) {
+export default function UpdatePhi({route}) {
   const Navigation = useNavigation();
 
-  const noticeID = route.params.noticeId;
-  const [title, settitle] = useState(route.params.title);
-  const [date, setdate] = useState(route.params.date);
-  const [desc, setdesc] = useState(route.params.description);
+  const phiId = route.params.phiId;
+  const [firstName, setfirstName] = useState(route.params.firstName);
+  const [lastName, setlastName] = useState(route.params.lastName);
+  const [age, setage] = useState(route.params.age);
+  const [gender, setgender] = useState(route.params.gender);
+  const [nicNumber, setnicNumber] = useState(route.params.nicNumber);
+  const [address, setaddress] = useState(route.params.address);
+
+
 
   // This function call when the user click submit button
   const onPressUpdate = () => {
-    console.log(noticeID);
+    console.log(phiId);
     // Create constant object to pass value to backend
-    if (title.value === ' ') {
-      ToastAndroid.show('Title Field Empty !', ToastAndroid.SHORT);
-    } else if (date.value == ' ') {
-      ToastAndroid.show('Date Field Empty !', ToastAndroid.SHORT);
+    if (firstName.value === ' ') {
+      ToastAndroid.show('First Name Field Empty !', ToastAndroid.SHORT);
+    } else if (lastName.value == ' ') {
+      ToastAndroid.show('Last Name Field Empty !', ToastAndroid.SHORT);
+    } 
+    else if (age.value == ' ') {
+      ToastAndroid.show('Age Field Empty !', ToastAndroid.SHORT);
+    } 
+    else if (gender.value == ' ') {
+      ToastAndroid.show('Gender Field Empty !', ToastAndroid.SHORT);
+    } 
+    else if (nicNumber.value == ' ') {
+      ToastAndroid.show('NIC Number Field Empty !', ToastAndroid.SHORT);
+    } 
+    else if (address.value == ' ') {
+      ToastAndroid.show('Address Field Empty !', ToastAndroid.SHORT);
     } else {
       const data = {
-        title: title,
-        date: date,
-        description: desc,
+        firstName: firstName,
+        lastName: lastName,
+        age: age,
+        gender:gender,
+        nicNumber:nicNumber,
+        address:address
       };
       //Call POST method to validate user crenditals form backend and get reponse
       axios
-        .put(BASE_URL + `notice/update/${noticeID}`, data)
+        .put(BASE_URL + `Phi/update/${phiId}`, data)
         .then(function (res) {
           if (res.data.success) {
-            ToastAndroid.show(
-              'Notice Update Successfully !',
-              ToastAndroid.SHORT,
-            );
+            ToastAndroid.show('Patient Updated Successfully !', ToastAndroid.SHORT);
             setTimeout(() => {
-              Navigation.navigate('NoticeFetch');
+              Navigation.navigate('phi');
             }, 2000);
           }
         })
@@ -62,35 +79,58 @@ export default function UpdateNotice({route}) {
             />
           </View>
         </View> */}
+      
 
-        <Text style={styles.header}>Update Notice Details</Text>
+
+        <Text style={styles.header}>Update Patient Details</Text>
 
         <TextInput
-          label="Post title"
+          label="Update First Name"
           returnKeyType="next"
-          value={title}
-          onChangeText={text => settitle(text)}
+          value={firstName}
+          onChangeText={text => setfirstName(text)}
         />
 
         <TextInput
-          label="Date"
+          label="Update Last Name"
           returnKeyType="next"
-          value={date}
-          onChangeText={text => setdate(text)}
-        />
+          value={lastName}
+          onChangeText={text => setlastName(text)}
+        /> 
 
         <TextInput
-          label="Description"
+          label="Update Age"
           multiline={true}
           numberOfLines={4}
-          value={desc}
-          onChangeText={text => setdesc(text)}
+          value={age}
+          onChangeText={text => setage(text)}
+        />
+        <TextInput
+          label="Update Gender"
+          multiline={true}
+          numberOfLines={4}
+          value={gender}
+          onChangeText={text => setgender(text)}
+        />
+        <TextInput
+          label="Update NIC Number"
+          multiline={true}
+          numberOfLines={4}
+          value={nicNumber}
+          onChangeText={text => setnicNumber(text)}
+        />
+        <TextInput
+          label="Update Address"
+          multiline={true}
+          numberOfLines={4}
+          value={address}
+          onChangeText={text => setaddress(text)}
         />
         <SubmitButton mode="contained" color="#6495ed" onPress={onPressUpdate}>
           Update
         </SubmitButton>
       </View>
-    </View>
+      </View>
     // {/* </Background> */}
   );
 }

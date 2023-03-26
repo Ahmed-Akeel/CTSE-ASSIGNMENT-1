@@ -1,11 +1,10 @@
-
 import {React, useState, useEffect} from 'react';
 // import {useNavigation} from 'react-navigation/native';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 // import Background from '../../components/session/Background';
 import Icon from 'react-native-vector-icons/Feather';
-import Button from '../SubComponent/Button';
+import Button from '../SubComponent/Button'
 import {BASE_URL} from '../Baseurl';
 
 import {
@@ -15,24 +14,27 @@ import {
   TouchableOpacity,
   Image,
   Alert,
-  //   Button,
+//   Button,
   ScrollView,
   SectionList,
   Linking,
+  ToastAndroid
 } from 'react-native';
-import {black} from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
+import { black } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
-export default function NoticeFetch() {
+export default function PhiFetch() {
   const Navigation = useNavigation();
 
   const [issues, setIssues] = useState([]);
 
+  
+
   const retriveIssue = () => {
     axios
-      .get(BASE_URL + 'getallnotice')
+      .get(BASE_URL + 'getAllphi')
       .then(function (response) {
         if (response.data.success) {
-          setIssues(response.data.exsitingNotices);
+          setIssues(response.data.exsistingPatients);
         }
       })
       .catch(function (error) {
@@ -41,7 +43,7 @@ export default function NoticeFetch() {
   };
 
   const onDeletePost = id => {
-    Alert.alert('Are You Sure?', 'Are you sure to delete this Notice?', [
+    Alert.alert('Are You Sure?', 'Are you sure to delete this Patient?', [
       {
         text: 'Cancel',
         onPress: () => console.log('Cancel Pressed'),
@@ -53,10 +55,10 @@ export default function NoticeFetch() {
 
   const deletePost = id => {
     axios
-      .delete(BASE_URL + `notice/delete/${id}`)
+      .delete(BASE_URL + `Phi/delete/${id}`)
       .then(function (res) {
         if (res.data.success) {
-          ToastAndroid.show('Delete Successfully', ToastAndroid.SHORT);
+          ToastAndroid.show('Deleted Successfully', ToastAndroid.SHORT);
           setTimeout(() => {
             retriveIssue();
           }, 1000);
@@ -69,73 +71,73 @@ export default function NoticeFetch() {
 
   const onEditPost = data => {
     const postData = {
-      noticeId: data._id,
-      title: data.title,
-      date: data.date,
-      description: data.description,
+      phiId: data._id,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      age: data.age,
+      gender: data.gender,
+      nicNumber: data.nicNumber,
+      address: data.address,
+     
     };
-    Navigation.navigate('UpdateNotice', postData);
+    Navigation.navigate('UpdatePhi', postData);
   };
 
   useEffect(() => {
     retriveIssue();
   }, []);
 
+
   return (
     <ScrollView>
-      <View>
-        <View style={styles.container}>
-          <Text style={styles.pagename}>All Notice Details</Text>
+    <View>
+      <View style={styles.container}>
+        <Text style={styles.pagename}>All Patients Details</Text>
 
-          {issues.map((data, index) => {
-            return (
-              <View style={styles.itemBox}>
-                <View style={styles.fixToText}>
-                  <Text style={styles.mainTital}>Title : {data.title}</Text>
+        {issues.map((data, index) => {
+          return (
+            <View style={styles.itemBox}>
+              <View style={styles.fixToText}>
+             
+                  <Text style={styles.mainTital}>FirstName : {data.firstName}</Text>
 
-                  <Text style={styles.mainButtonBlockText}>
-                    Date : {data.date}
-                  </Text>
+                  <Text style={styles.mainButtonBlockText}>last Name : {data.lastName}</Text>
 
-                  <Text style={styles.mainButtonBlockText}>
-                    Description : {data.description}
-                  </Text>
+                  <Text style={styles.mainButtonBlockText}>Age : {data.age}</Text>
+                  <Text style={styles.mainButtonBlockText}>Gender : {data.gender}</Text>
+                  <Text style={styles.mainButtonBlockText}>NIC Number : {data.nicNumber}</Text>
+                  <Text style={styles.mainButtonBlockText}>Address : {data.address}</Text>
 
-                  <View style={styles.but}>
-                    <Button
+                   <View style={styles.but}>
+                      <Button
                       style={styles.button}
-                      mode="contained"
-                      color="#dfdfdf"
-                      onPress={() => onDeletePost(data._id)}>
-                      {/* <Icon
-                          name="delete"
-                          size={14}
-                          fontWeight="bold"
-                          color="white"> */}
-                      &nbsp;Delete
-                      {/* </Icon> */}
-                    </Button>
+                        mode="contained"
+                        color="#dfdfdf"
+                        onPress={() => onDeletePost(data._id)}
+                        >
+                        
+                          &nbsp;Delete
+                        
+                      </Button>
+                     
+                      <Button
+                         style={styles.button}
+                        mode="contained"
+                        color="#dfdfdf"
+                        onPress={() => onEditPost(data)}
+                        >
+                       
+                          &nbsp;Edit
+                        
+                      </Button>
+                      </View>
 
-                    <Button
-                      style={styles.button}
-                      mode="contained"
-                      color="#dfdfdf"
-                      onPress={() => onEditPost(data)}>
-                      {/* <Icon
-                          name="edit"
-                          size={14}
-                          fontWeight="bold"
-                          color="white"> */}
-                      &nbsp;Edit
-                      {/* </Icon> */}
-                    </Button>
-                  </View>
-                </View>
               </View>
-            );
-          })}
-        </View>
+            </View>
+          );
+        })}
       </View>
+    </View>
     </ScrollView>
   );
 }
@@ -144,13 +146,13 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
   },
-  but: {
-    flexDirection: 'row',
+  but:{
+    flexDirection:"row",
   },
-  button: {
-    width: '47%',
-    fontSize: 9,
-    marginLeft: 5,
+  button:{
+   width: "47%",
+   fontSize: 9,
+   marginLeft: 5,
   },
   pagename: {
     fontSize: 26,
@@ -167,7 +169,7 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     backgroundColor: '#FFFFFF',
     width: 330,
-    height: 200,
+    height: 300,
     marginBottom: 15,
     borderRadius: 20,
     borderWidth: 1,
@@ -225,13 +227,14 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     alignItems: 'center',
     justifyContent: 'center',
+   
   },
   mainButtonBlockText: {
     fontSize: 18,
     color: '#000000',
     // fontSize: 25,
   },
-  mainTital: {
+  mainTital:{
     fontSize: 18,
     color: '#000000',
     backgroundColor: 'pink',
@@ -242,14 +245,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     fontWeight: 'bold',
   },
-
-  // fixToText: {
-  //   // flexDirection: 'row',
-  //   // justifyContent: 'space-between',
-  //   // marginLeft: 20,
-  //   // marginRight: 20,
-  //   // textAlign: 'left',
-  // },
+ 
   header: {
     fontSize: 21,
     fontWeight: 'bold',

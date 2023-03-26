@@ -1,11 +1,7 @@
-
 import {React, useState, useEffect} from 'react';
-// import {useNavigation} from 'react-navigation/native';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation } from '@react-navigation/native';
 import axios from 'axios';
-// import Background from '../../components/session/Background';
-import Icon from 'react-native-vector-icons/Feather';
-import Button from '../SubComponent/Button';
+import Button from '../SubComponent/Button'
 import {BASE_URL} from '../Baseurl';
 
 import {
@@ -15,24 +11,25 @@ import {
   TouchableOpacity,
   Image,
   Alert,
-  //   Button,
   ScrollView,
   SectionList,
   Linking,
 } from 'react-native';
-import {black} from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
+import { black } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
-export default function NoticeFetch() {
+export default function MathernityFetch() {
   const Navigation = useNavigation();
 
   const [issues, setIssues] = useState([]);
 
+  
+
   const retriveIssue = () => {
     axios
-      .get(BASE_URL + 'getallnotice')
+      .get(BASE_URL + 'getAllMathernity')
       .then(function (response) {
         if (response.data.success) {
-          setIssues(response.data.exsitingNotices);
+          setIssues(response.data.exsitingMothers);
         }
       })
       .catch(function (error) {
@@ -41,7 +38,7 @@ export default function NoticeFetch() {
   };
 
   const onDeletePost = id => {
-    Alert.alert('Are You Sure?', 'Are you sure to delete this Notice?', [
+    Alert.alert('Are You Sure?', 'Are you sure to delete?', [
       {
         text: 'Cancel',
         onPress: () => console.log('Cancel Pressed'),
@@ -53,7 +50,7 @@ export default function NoticeFetch() {
 
   const deletePost = id => {
     axios
-      .delete(BASE_URL + `notice/delete/${id}`)
+      .delete(BASE_URL + `mathernity/delete/${id}`)
       .then(function (res) {
         if (res.data.success) {
           ToastAndroid.show('Delete Successfully', ToastAndroid.SHORT);
@@ -69,73 +66,88 @@ export default function NoticeFetch() {
 
   const onEditPost = data => {
     const postData = {
-      noticeId: data._id,
-      title: data.title,
-      date: data.date,
-      description: data.description,
+      mathernityId: data._id,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      division: data.division,
+      regNo: data.regNo,
+      dob: data.dob,
+      address: data.address,
+      occupation: data.occupation,
+      healthStatus: data.healthStatus,
+      dateLast: data.dateLast,
+      dateReturn: data.dateReturn,
+
+    
     };
-    Navigation.navigate('UpdateNotice', postData);
+    Navigation.navigate('UpdateMathernity', postData);
   };
 
   useEffect(() => {
     retriveIssue();
   }, []);
 
+
   return (
     <ScrollView>
-      <View>
-        <View style={styles.container}>
-          <Text style={styles.pagename}>All Notice Details</Text>
+    <View>
+      <View style={styles.container}>
+        <Text style={styles.pagename}>All Mothers Details</Text>
 
-          {issues.map((data, index) => {
-            return (
-              <View style={styles.itemBox}>
-                <View style={styles.fixToText}>
-                  <Text style={styles.mainTital}>Title : {data.title}</Text>
+        {issues.map((data, index) => {
+          return (
+            <View style={styles.itemBox}>
+              <View style={styles.fixToText}>
+             
+                  <Text style={styles.mainButtonBlockText}>First Name : {data.firstName}</Text>
+                  <Text style={styles.mainButtonBlockText}>Last Name : {data.lastName}</Text>
+                  <Text style={styles.mainButtonBlockText}>Division : {data.division}</Text>
+                  <Text style={styles.mainButtonBlockText}>Registration no. : {data.regNo}</Text>
+                  <Text style={styles.mainButtonBlockText}>Date of Birth : {data.dob}</Text>
+                  <Text style={styles.mainButtonBlockText}>Address : {data.address}</Text>
+                  <Text style={styles.mainButtonBlockText}>Occupation : {data.occupation}</Text>
+                  <Text style={styles.mainButtonBlockText}>Health Status : {data.healthStatus}</Text>
+                  <Text style={styles.mainButtonBlockText}>Last Day of visited : {data.dateLast}</Text>
+                  <Text style={styles.mainButtonBlockText}>Next Day of visit: {data.dateReturn}</Text>
 
-                  <Text style={styles.mainButtonBlockText}>
-                    Date : {data.date}
-                  </Text>
-
-                  <Text style={styles.mainButtonBlockText}>
-                    Description : {data.description}
-                  </Text>
-
-                  <View style={styles.but}>
-                    <Button
+                   <View style={styles.but}>
+                      <Button
                       style={styles.button}
-                      mode="contained"
-                      color="#dfdfdf"
-                      onPress={() => onDeletePost(data._id)}>
-                      {/* <Icon
+                        mode="contained"
+                        color="#43cfac"
+                        onPress={() => onDeletePost(data._id)}
+                        >
+                        {/* <Icon
                           name="delete"
                           size={14}
                           fontWeight="bold"
                           color="white"> */}
-                      &nbsp;Delete
-                      {/* </Icon> */}
-                    </Button>
-
-                    <Button
-                      style={styles.button}
-                      mode="contained"
-                      color="#dfdfdf"
-                      onPress={() => onEditPost(data)}>
-                      {/* <Icon
+                          &nbsp;Delete
+                        {/* </Icon> */}
+                      </Button>
+                     
+                      <Button
+                         style={styles.button}
+                        mode="contained"
+                        color="#43CFAC"
+                        onPress={() => onEditPost(data)}
+                        >
+                        {/* <Icon
                           name="edit"
                           size={14}
                           fontWeight="bold"
                           color="white"> */}
-                      &nbsp;Edit
-                      {/* </Icon> */}
-                    </Button>
-                  </View>
-                </View>
+                          &nbsp;Edit
+                        {/* </Icon> */}
+                      </Button>
+                      </View>
+
               </View>
-            );
-          })}
-        </View>
+            </View>
+          );
+        })}
       </View>
+    </View>
     </ScrollView>
   );
 }
@@ -144,13 +156,13 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
   },
-  but: {
-    flexDirection: 'row',
+  but:{
+    flexDirection:"row",
   },
-  button: {
-    width: '47%',
-    fontSize: 9,
-    marginLeft: 5,
+  button:{
+   width: "47%",
+   fontSize: 9,
+   marginLeft: 5,
   },
   pagename: {
     fontSize: 26,
@@ -167,7 +179,7 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     backgroundColor: '#FFFFFF',
     width: 330,
-    height: 200,
+    height: 350,
     marginBottom: 15,
     borderRadius: 20,
     borderWidth: 1,
@@ -225,13 +237,14 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     alignItems: 'center',
     justifyContent: 'center',
+   
   },
   mainButtonBlockText: {
     fontSize: 18,
     color: '#000000',
     // fontSize: 25,
   },
-  mainTital: {
+  mainTital:{
     fontSize: 18,
     color: '#000000',
     backgroundColor: 'pink',
@@ -243,13 +256,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  // fixToText: {
-  //   // flexDirection: 'row',
-  //   // justifyContent: 'space-between',
-  //   // marginLeft: 20,
-  //   // marginRight: 20,
-  //   // textAlign: 'left',
-  // },
   header: {
     fontSize: 21,
     fontWeight: 'bold',
