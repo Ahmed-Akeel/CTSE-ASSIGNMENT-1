@@ -1,3 +1,4 @@
+
 import {React, useState, useEffect} from 'react';
 // import {useNavigation} from 'react-navigation/native';
 import {useNavigation} from '@react-navigation/native';
@@ -73,7 +74,7 @@ export default function NoticeFetch() {
       date: data.date,
       description: data.description,
     };
-    Navigation.navigate('NoticeUpdate', postData);
+    Navigation.navigate('UpdateNotice', postData);
   };
 
   useEffect(() => {
